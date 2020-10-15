@@ -7,6 +7,8 @@
 <p>java.lang.IllegalArgumentException: navigation destination <code>NAVAGATION_ACTION_ID</code> is unknown to this NavController</p>
 </blockquote>
 <p>当我发呆时，无意用手指同时点击了2个包含 <code>Navigation</code> 跳转的 Item，触发了这个问题。</p>
+<a id="more"></a>
+
 <p>修复前</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Navigation.findNavController(view).navigate(NAVAGATION_ACTION_ID);</span><br></pre></td></tr></table></figure>
 
@@ -27,6 +29,8 @@
     <content><![CDATA[<p>这篇文章缘起在酷安上，<a href="https://neofelhz.space/">neoFelhz</a> 与我的对话。</p>
 <p><img src="https://ooo.0o0.ooo/2017/02/03/5894910cb3570.png"></p>
 <p>经过了我的这个 APP 第三次 Release 之后，我突然觉得，自动版本控制还是很重要的，但是我觉得 SemVer 对于我的小项目过于繁琐，因此有了这篇文章。</p>
+<a id="more"></a>
+
 <p>会 <code>git diff</code> 的盆友，可以直接看这条 commit 快速 GET 这项技能。</p>
 <p><a href="https://github.com/Omico/CurrentActivity/commit/96af43e2b8b4cff53020889a6a91f40b0ceb32fe">https://github.com/Omico/CurrentActivity/commit/96af43e2b8b4cff53020889a6a91f40b0ceb32fe</a></p>
 <h2 id="自动版本号（versionCode）"><a href="#自动版本号（versionCode）" class="headerlink" title="自动版本号（versionCode）"></a>自动版本号（versionCode）</h2><p>关于自动版本号，我就像图片里说的，我认为用 commit id 的个数就能很好表达。</p>
@@ -82,6 +86,8 @@
     <content><![CDATA[<p>最近写了一个<a href="https://github.com/Omico/CurrentActivity">当前进程</a>的 APP ，有<code>方便一些高阶机油进行写轮眼校调</code>等作用。</p>
 <p>随着版本的衍进，修改版本号和升级 <code>Android Support Library</code> 变得繁复。</p>
 <p>因此，我开始借用 <code>Gradle</code> 语法，让项目更易于管理。</p>
+<a id="more"></a>
+
 <p>以下开始分步骤进行教学。</p>
 <p>会 <code>git diff</code> 的盆友，可以直接看这条 commit 快速 GET 这项技能。</p>
 <p><a href="https://github.com/Omico/CurrentActivity/commit/a535c03b88734bc1266dddbca5c03c5f3f017dc4">https://github.com/Omico/CurrentActivity/commit/a535c03b88734bc1266dddbca5c03c5f3f017dc4</a></p>
@@ -125,6 +131,8 @@
 <p><a href="http://weibo.com/5344594676/EujFal96K">http://weibo.com/5344594676/EujFal96K</a></p>
 <p>作为一个辣鸡 Android 开发者，我表示无话(Fxxk)可说，为什么？具体看下面。</p>
 <p>注：以下都是在 Android 的方面上通俗的讲，不一定能代表其他方面或其他编程语言。</p>
+<a id="more"></a>
+
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="问：源码是什么，源码和编译的关系是是什么？"><a href="#问：源码是什么，源码和编译的关系是是什么？" class="headerlink" title="问：源码是什么，源码和编译的关系是是什么？"></a>问：源码是什么，源码和编译的关系是是什么？</h3><p>答：</p>
 <blockquote>
 <p>在现代程序语言中，源代码可以是以书籍或者磁带的形式出现；<br>但最常用的格式是文本文件，这种典型格式的目的是为了编译出计算机程序。<br>计算机源代码的最终目的是将人类可读的文本翻译成为计算机可以执行的二进制指令，这种过程叫做编译，通过编译器完成。</p>
@@ -163,7 +171,7 @@
     <content><![CDATA[<p>已经很久没有维护博客了，打算把昨天睡不着后爬起来的下了一份 Chromium Android 的源码编译的过程水出一篇博文，结果发现之前用的主题已经停止维护了。</p>
 <p>在众多主题中一眼相中了 <code>NexT</code>。</p>
 <p>花了些时间不断微调配置，总算是好了。</p>
-<p>还在考虑之前的博文要不要删掉，感觉文笔实在差劲。。。</p>
+<p>还在考虑之前的博文要不要删掉，感觉文笔实在差劲。。。<del>现在也是</del></p>
 ]]></content>
       <categories>
         <category>技术向</category>
@@ -183,6 +191,8 @@
 <p>注意！在解锁前请自行备份手机数据！！！</p>
 <p>注意！在解锁前请自行备份手机数据！！！</p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>进入开发者模式</p>
 <p>开启 OEM 解锁</p>
 <p>开启 USB 调试</p>
@@ -216,6 +226,8 @@
 <p>这时，我们的当前目录下会生成一个 <code>.repo</code> 目录，我们可以在 <code>.repo</code> 下新建一个 <code>local_manifests</code>，并在其目录下新建一个任意名字的 XML 文件，当我们 <code>repo sync</code> 后，<code>local_manifests</code> 里 XML 文件中的内容也会一起被同步。</p>
 <p>通过 <code>.repo/docs/manifest-format.txt</code> 我得知 repo 可以通过以下代码来创建软链接。</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">linkfile</span> <span class="attr">src</span>=<span class="string">&quot;real_file_or_dir_path&quot;</span> <span class="attr">dest</span>=<span class="string">&quot;source_path&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <p>由于我硬盘内存放大量不同的 Android 源码（ Lineage 、 Mokee 等等）。但是，有些是可以通用的，比如 kernel 亦或者从厂商 ROM 里拉取的 vendor。</p>
 <p>由此我不经在想，我能否通过上述 repo 的语法从本地弄一个软链接，让多套源码共用，以达到节省本地硬盘空间的目的呢？</p>
@@ -264,6 +276,8 @@
 <blockquote>
 <p>Denotes that the annotated element should not be removed when the code is minified at build time. This is typically used on methods and classes that are accessed only via reflection so a compiler may think that the code is unused.</p>
 </blockquote>
+<a id="more"></a>
+
 <p>翻译（以下翻译来自谷歌）：</p>
 <blockquote>
 <p>表示在构建时缩减代码时不应删除带注释的元素。 这通常用于只通过反射访问的方法和类，因此编译器可能认为代码未使用。</p>
