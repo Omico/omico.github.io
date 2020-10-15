@@ -23,7 +23,7 @@
   </entry>
   <entry>
     <title>Android Studio Gradle 自动版本控制</title>
-    <url>/2017/02/03/android-studio-gradle-auto-version-control/</url>
+    <url>/2017/02/04/android-studio-gradle-auto-version-control/</url>
     <content><![CDATA[<p>这篇文章缘起在酷安上，<a href="https://neofelhz.space/">neoFelhz</a> 与我的对话。</p>
 <p><img src="https://ooo.0o0.ooo/2017/02/03/5894910cb3570.png"></p>
 <p>经过了我的这个 APP 第三次 Release 之后，我突然觉得，自动版本控制还是很重要的，但是我觉得 SemVer 对于我的小项目过于繁琐，因此有了这篇文章。</p>
@@ -120,7 +120,7 @@
   </entry>
   <entry>
     <title>作为一个 Android 玩机人士必须熟悉的常识性问题</title>
-    <url>/2017/02/06/android-user-from-naive-to-experienced/</url>
+    <url>/2017/02/07/android-user-from-naive-to-experienced/</url>
     <content><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>具体看以下链接：</p>
 <p><a href="http://weibo.com/5344594676/EujFal96K">http://weibo.com/5344594676/EujFal96K</a></p>
 <p>作为一个辣鸡 Android 开发者，我表示无话(Fxxk)可说，为什么？具体看下面。</p>
@@ -159,7 +159,7 @@
   </entry>
   <entry>
     <title>博客主题迁移到 NexT</title>
-    <url>/2020/10/14/hexo-theme-migrate-to-next/</url>
+    <url>/2020/10/15/hexo-theme-migrate-to-next/</url>
     <content><![CDATA[<p>已经很久没有维护博客了，打算把昨天睡不着后爬起来的下了一份 Chromium Android 的源码编译的过程水出一篇博文，结果发现之前用的主题已经停止维护了。</p>
 <p>在众多主题中一眼相中了 <code>NexT</code>。</p>
 <p>花了些时间不断微调配置，总算是好了。</p>
@@ -176,7 +176,7 @@
   </entry>
   <entry>
     <title>雷蛇手机2解锁 bootloader</title>
-    <url>/2019/12/26/razer-phone-2-unlocking-the-bootloader/</url>
+    <url>/2019/12/27/razer-phone-2-unlocking-the-bootloader/</url>
     <content><![CDATA[<p>在阅读本教程前你需要 <code>adb</code> 和 <code>fastboot</code> 工具（<a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">在此下载</a>）</p>
 <blockquote>
 <p>注意！在解锁前请自行备份手机数据！！！</p>
@@ -207,7 +207,7 @@
   </entry>
   <entry>
     <title>repo 的妙用</title>
-    <url>/2017/07/30/the-magical-effect-of-repo/</url>
+    <url>/2017/07/31/the-magical-effect-of-repo/</url>
     <content><![CDATA[<blockquote>
 <p>这个想法已经在我心底很久了，然而一直没着手去验证是否可行，终于，在今天。。。</p>
 </blockquote>
@@ -242,7 +242,7 @@
   </entry>
   <entry>
     <title>新的起点</title>
-    <url>/2017/01/22/the-new-start/</url>
+    <url>/2017/01/23/the-new-start/</url>
     <content><![CDATA[<p>转眼之间已经到了2017年。。。</p>
 <p>学业上，我结束了大学的第一个学期。</p>
 <p>技术上，我在 Android 的坑里越陷越深。</p>
