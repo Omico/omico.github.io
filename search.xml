@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Android Jetpack - Navigation 组件踩坑日记</title>
-    <url>/2019/11/20/android-jetpack-navgation-notes/</url>
+    <url>/2019/11/21/android-jetpack-navgation-notes/</url>
     <content><![CDATA[<blockquote>
 <p>java.lang.IllegalArgumentException: navigation destination <code>NAVAGATION_ACTION_ID</code> is unknown to this NavController</p>
 </blockquote>
@@ -158,6 +158,23 @@
       </tags>
   </entry>
   <entry>
+    <title>博客主题迁移到 NexT</title>
+    <url>/2020/10/14/hexo-theme-migrate-to-next/</url>
+    <content><![CDATA[<p>已经很久没有维护博客了，打算把昨天睡不着后爬起来的下了一份 Chromium Android 的源码编译的过程水出一篇博文，结果发现之前用的主题已经停止维护了。</p>
+<p>在众多主题中一眼相中了 <code>NexT</code>。</p>
+<p>花了些时间不断微调配置，总算是好了。</p>
+<p>还在考虑之前的博文要不要删掉，感觉文笔实在差劲。。。</p>
+]]></content>
+      <categories>
+        <category>技术向</category>
+      </categories>
+      <tags>
+        <tag>自言自语</tag>
+        <tag>Hexo</tag>
+        <tag>Hexo theme</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>雷蛇手机2解锁 bootloader</title>
     <url>/2019/12/26/razer-phone-2-unlocking-the-bootloader/</url>
     <content><![CDATA[<p>在阅读本教程前你需要 <code>adb</code> 和 <code>fastboot</code> 工具（<a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">在此下载</a>）</p>
@@ -263,23 +280,6 @@
       <tags>
         <tag>Android</tag>
         <tag>Android Studio</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客主题迁移到 NexT</title>
-    <url>/2020/10/14/hexo-theme-migrate-to-next/</url>
-    <content><![CDATA[<p>已经很久没有维护博客了，打算把昨天睡不着后爬起来的下了一份 Chromium Android 的源码编译的过程水出一篇博文，结果发现之前用的主题已经停止维护了。</p>
-<p>在众多主题中一眼相中了 <code>NexT</code>。</p>
-<p>花了些时间不断微调配置，总算是好了。</p>
-<p>还在考虑之前的博文要不要删掉，感觉文笔实在差劲。。。</p>
-]]></content>
-      <categories>
-        <category>技术向</category>
-      </categories>
-      <tags>
-        <tag>自言自语</tag>
-        <tag>Hexo</tag>
-        <tag>Hexo theme</tag>
       </tags>
   </entry>
 </search>
