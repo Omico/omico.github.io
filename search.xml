@@ -166,6 +166,104 @@
       </tags>
   </entry>
   <entry>
+    <title>在 WSL2 下编译适用于 Android 的 Chromium 踩坑日志</title>
+    <url>/2020/10/16/compile-chromium-for-android-under-WSL2/</url>
+    <content><![CDATA[<p>前天睡不着，脑子里在想在 Android 上 Chrome 是怎么获取网站的 favicon 的。于是，直接爬起来下载了一份适用于 Android 的 Chromium 源码，准备扒开看看。</p>
+<p>下完后，按照个人习惯，先跑一遍编译，可是在编译的过程中遇到了些小坑，遂有了这篇水文。</p>
+<p><del>为了这篇文章，我不得不拾起我将近一年没有维护的博客，重建博客也花了不少时间。</del></p>
+<a id="more"></a>
+
+<p>安装 WSL2 的部分略过，这不属于本文的范畴，只需简简单单按照微软给出的<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">官方文档</a>就可以很轻松的完成安装。</p>
+<p>已下开始进入正文，我用的是 <code>Ubuntu 20.04</code> 作为编译环境。</p>
+<h2 id="需要的依赖"><a href="#需要的依赖" class="headerlink" title="需要的依赖"></a>需要的依赖</h2><p>下载以及编译 Chromium 需要自行安装 Git 和 Python 2。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install git python</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><p>根据 Chromium 给出的<a href="https://chromium.googlesource.com/chromium/src/+/master/docs/android_build_instructions.md">官方文档</a>依次运行已下命令。</p>
+<h3 id="下载用于下载源码的工具"><a href="#下载用于下载源码的工具" class="headerlink" title="下载用于下载源码的工具"></a>下载用于下载源码的工具</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://chromium.googlesource.com/</span><br><span class="line">chromium/tools/depot_tools.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export PATH=&quot;$PATH:$HOME/depot_tools&quot;</span><br></pre></td></tr></table></figure>
+
+<p>把工具路径加入环境变量中，方便调用。实际上为了下次不再输入这个命令，我手动加入到 .zshrc 里了。.zshrc 是 zsh 的配置文件，zsh 的安装不在本文范围内。你可以根据自身需求将以下命令加入到 .bashrc 或 /etc/profile 里。</p>
+<h3 id="创建源码目录，以及下载源码"><a href="#创建源码目录，以及下载源码" class="headerlink" title="创建源码目录，以及下载源码"></a>创建源码目录，以及下载源码</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir ~/chromium &amp;&amp; cd ~/chromium</span><br><span class="line">fetch --nohooks android</span><br></pre></td></tr></table></figure>
+
+<p>文档中提到：</p>
+<blockquote>
+<p>If you don’t want the full repo history, you can save a lot of time by adding the –no-history flag to fetch.</p>
+</blockquote>
+<p>我并不需要源码的历史记录因此我真正运行的命令是：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir ~/chromium &amp;&amp; cd ~/chromium</span><br><span class="line">fetch --nohooks --no-history android</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载编译-Chromium-的依赖"><a href="#下载编译-Chromium-的依赖" class="headerlink" title="下载编译 Chromium 的依赖"></a>下载编译 Chromium 的依赖</h3><p>根据文档所说我们需要进入 <code>src</code> 目录，写入文件声明目标系统是 Android，并开始同步 Android 所需的依赖库。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd src</span><br><span class="line">echo &quot;target_os = [ &#x27;android&#x27; ]&quot; &gt;&gt; ../.gclient</span><br><span class="line">gclient sync</span><br></pre></td></tr></table></figure>
+
+<p>文档中还提到，在编译适用于 Android 的 Chromium 之前，需要下载安装额外的依赖。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在 src 目录下运行</span></span><br><span class="line">build/install-build-deps-android.sh</span><br></pre></td></tr></table></figure>
+
+<p>注意在 WSL2 下安装 Snapcraft 会报错，通过 <a href="https://discourse.ubuntu.com/t/using-snapd-in-wsl2/12113">Google 到的解决方法</a>依次运行以下两条命令得以正常安装。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo daemonize /usr/bin/unshare --fork --pid --mount-proc /lib/systemd/systemd --system-unit=basic.target</span><br><span class="line">exec sudo nsenter -t $(pidof systemd) -a su - $LOGNAME</span><br></pre></td></tr></table></figure>
+
+<p>然后接着看文档，文档中说我们还需要运行钩子以安装额外依赖。</p>
+<p><img src="https://i.loli.net/2020/10/16/meJyCEs1jupYg7x.jpg" alt="好！很有精神！"></p>
+<p>好！很有精神！</p>
+<p>装就完事了~</p>
+<blockquote>
+<p>Once you’ve run install-build-deps at least once, you can now run the Chromium-specific hooks, which will download additional binaries and other things you might need:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gclient runhooks</span><br></pre></td></tr></table></figure>
+
+<p>另外文档中提到可以申请 API keys 用以调用谷歌服务，这里用不到略过了~</p>
+<blockquote>
+<p>Optional: You can also install API keys if you want your build to talk to some Google services, but this is not necessary for most development and testing purposes.</p>
+</blockquote>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>终于可以开始编译，根据文档所说我们需要运行已下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gn args out/Default</span><br></pre></td></tr></table></figure>
+
+<p>并将已下内容写入到 <code>out/Default/args.gn</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">target_os = &quot;android&quot;</span><br><span class="line">target_cpu = &quot;arm64&quot;  # See &quot;Figuring out target_cpu&quot; below</span><br></pre></td></tr></table></figure>
+
+<p>这里我一切照搬，因为现在的 Android 手机都是 64 位系统了，所以 <code>target_cpu</code> 是 <code>arm64</code>。</p>
+<p>我不喜欢使用 vim 输入因此直接 <code>:qa</code> 退出，并通过 VS Code 修改。</p>
+<p>最后运行以下命令就可以开始编译了：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">autoninja -C out/Default chrome_public_apk</span><br></pre></td></tr></table></figure>
+
+<p>经过一段漫长的等待我们可以在 <code>out/Default/apks</code> 下看到我们的成品 <code>ChromePublic.apk</code></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>安装打开使用一切都很顺利。</p>
+<p>顺带查看了下版本号，发现了点有意思的事情。</p>
+<table>
+<thead>
+<tr>
+<th>Variants</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Chrome</td>
+<td>86.0.4240.75</td>
+</tr>
+<tr>
+<td>Chrome Canary</td>
+<td>88.0.4291.0</td>
+</tr>
+<tr>
+<td>自己编译的 Chromium</td>
+<td>88.0.4292.0</td>
+</tr>
+</tbody></table>
+<p>由此可以看出，谷歌对 Chrome 的测试还是非常严格的。通过查看<a href="https://www.chromium.org/developers/version-numbers">文档</a>也可以进一步说明此问题。</p>
+<p>最后也在漫长的编译等待过程中找到了调用 favicon 的部分代码，全是通过 JNI 操作 C 来调用的。好吧我就知道，这种大型的跨平台应用为了节约各种成本，一定会共用大量代码，而不可能老老实实用 Java 在 Android 上全部写一遍的~</p>
+]]></content>
+      <categories>
+        <category>技术向</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>WSL2</tag>
+        <tag>WSL</tag>
+        <tag>Chromium</tag>
+        <tag>Compile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客主题迁移到 NexT</title>
     <url>/2020/10/15/hexo-theme-migrate-to-next/</url>
     <content><![CDATA[<p>已经很久没有维护博客了，打算把昨天睡不着后爬起来的下了一份 Chromium Android 的源码编译的过程水出一篇博文，结果发现之前用的主题已经停止维护了。</p>
